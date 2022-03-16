@@ -10,7 +10,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,7 +32,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin') ? 'active' : '' }}" aria-current="page" href="{{ route('admin') }}">
+                                {{ __('Dashboard') }}
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('post.index') ? 'active' : '' }}" aria-current="page" href="{{ route('post.index') }}">
+                                {{ __('Posts') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/admin/comments">{{ __('Comments') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -79,5 +92,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>

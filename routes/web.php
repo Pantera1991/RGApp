@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Front\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(static function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/post/search', [PostController::class, 'search'])->name('post.search');
+    Route::resource('/admin/post', PostController::class);
 });
 
 Route::get('/', [IndexController::class, 'index']);
