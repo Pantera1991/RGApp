@@ -54,7 +54,7 @@
                 <div class="card">
                     <div class="card-body">
                         @if($posts->count() === 0)
-                            @include('helper.empty.data')
+                            @include('helper.empty_data')
                         @else
                             @include('admin.post.list')
                         @endif
