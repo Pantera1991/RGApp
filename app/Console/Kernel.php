@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Jobs\ProcessComment;
+use App\Jobs\ProcessPost;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +26,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        //adding a post every day
+        $schedule->job(new ProcessPost())->daily();
+
+        //adding a "Tak" comment to a random selected post at every 36 minute
+        $schedule->job(new ProcessComment())->cron("*/36 * * * *");
     }
 
     /**

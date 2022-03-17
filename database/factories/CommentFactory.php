@@ -23,4 +23,19 @@ class CommentFactory extends Factory
             'post_id' => $this->faker->randomElement($ids)
         ];
     }
+
+
+    /**
+     * @return array
+     */
+    public function definitionSayYes(): array
+    {
+        $ids = Post::pluck('id')->toArray();
+
+        return [
+            'author' => $this->faker->name,
+            'content' => "TAK",
+            'post_id' => $this->faker->randomElement($ids)
+        ];
+    }
 }
