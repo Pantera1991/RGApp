@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Front\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes([
+    'register' => false
+]);
+
 Route::middleware(['auth'])->group(static function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
@@ -26,10 +31,9 @@ Route::middleware(['auth'])->group(static function () {
 
     Route::get('/admin/comments/search', [CommentController::class, 'search'])->name('comments.search');
     Route::resource('/admin/comments', CommentController::class);
+
+    Route::get('/admin/users/search', [UserController::class, 'search'])->name('users.search');
+    Route::resource('/admin/users', UserController::class);
 });
 
 Route::get('/', [IndexController::class, 'index']);
-
-Auth::routes([
-    'register' => false
-]);

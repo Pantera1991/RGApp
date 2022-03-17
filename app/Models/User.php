@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Filters\Filterable;
 use Database\Factories\UserFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -41,7 +42,7 @@ use Illuminate\Support\Carbon;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Filterable;
 
     /**
      * The attributes that are mass assignable.
@@ -71,11 +72,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * @param string $email
-     * @return bool
+     * @var string[]
      */
-    public static function isUniqueEmail(string $email): bool
-    {
-        return self::whereEmail($email)->first() === null;
-    }
+    public static array $sortable = [
+        'id', 'email', 'name', 'created_at', 'updated_at'
+    ];
 }
