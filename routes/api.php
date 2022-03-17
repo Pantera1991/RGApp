@@ -20,5 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('v1/posts',PostApiController::class);
-Route::resource('v1/comments',CommentApiController::class);
+Route::prefix('v1')->group(function () {
+    Route::resource('posts', PostApiController::class)->names('api.posts');
+    Route::resource('comments', CommentApiController::class,)->names('api.comments');
+});
+
