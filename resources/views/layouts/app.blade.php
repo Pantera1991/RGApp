@@ -33,19 +33,26 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin') ? 'active' : '' }}" aria-current="page" href="{{ route('admin') }}">
+                            <a class="nav-link {{ request()->routeIs('admin') ? 'active' : '' }}"
+                               aria-current="page"
+                               href="{{ route('admin') }}">
                                 {{ __('Dashboard') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('post.index') ? 'active' : '' }}" aria-current="page" href="{{ route('post.index') }}">
+                            <a class="nav-link {{ request()->routeIs('post.index') ? 'active' : '' }}"
+                               aria-current="page"
+                               href="{{ route('post.index') }}">
                                 {{ __('Posts') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/admin/comments">{{ __('Comments') }}</a>
+                            <a class="nav-link {{ request()->routeIs('comments.index') ? 'active' : '' }}"
+                               aria-current="page" href="{{ route('comments.index') }}">
+                                {{ __('Comments') }}
+                            </a>
                         </li>
                     </ul>
 
