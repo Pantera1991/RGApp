@@ -31,8 +31,8 @@ class PostApiController extends Controller
      */
     public function index(): JsonResponse
     {
-        $posts = $this->postService->getAll();
-        return PostResource::collection($posts->paginate(10))->response();
+        $posts = $this->postService->getAll(10);
+        return PostResource::collection($posts)->response();
     }
 
     /**

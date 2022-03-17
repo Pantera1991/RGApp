@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Post;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PostService implements IPostService
 {
@@ -11,9 +11,9 @@ class PostService implements IPostService
     /**
      * @inheritDoc
      */
-    public function getAll(int $perPage = 10): Builder
+    public function getAll(int $perPage = 10): LengthAwarePaginator
     {
-        return Post::with(['comments']);
+        return Post::with(['comments'])->paginate($perPage);
     }
 
     /**

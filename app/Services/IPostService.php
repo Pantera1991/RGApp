@@ -3,15 +3,15 @@
 namespace App\Services;
 
 use App\Models\Post;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface IPostService
 {
     /**
      * @param int $perPage
-     * @return Builder
+     * @return LengthAwarePaginator
      */
-    public function getAll(int $perPage = 10): Builder;
+    public function getAll(int $perPage = 10): LengthAwarePaginator;
 
     /**
      * @param int $postId
