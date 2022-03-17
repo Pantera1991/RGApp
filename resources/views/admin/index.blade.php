@@ -17,11 +17,6 @@
                         <p>
                             It is a simple application for creating posts and managing comments.
                         </p>
-
-                        <h2>{{__('Stats')}}</h2>
-                        <p>
-                            {{-- todo: simple stats like count post etc... --}}
-                        </p>
                     </div>
                 </div>
             </div>
