@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\IPostService;
+use App\Services\PostService;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(IPostService::class, PostService::class);
     }
 
     /**
