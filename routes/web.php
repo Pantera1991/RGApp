@@ -36,4 +36,4 @@ Route::middleware(['auth'])->group(static function () {
     Route::resource('/admin/users', UserController::class);
 });
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('front');
