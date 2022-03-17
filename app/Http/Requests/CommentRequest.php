@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class CommentRequest extends FormRequest
 {
@@ -27,7 +26,7 @@ class CommentRequest extends FormRequest
         return [
             'author' => 'required|min:3|max:100',
             'content' => 'required|min:3|max:500',
-            "post_id" => 'required|integer'
+            "post_id" => 'required|integer|exists:posts,id'
         ];
     }
 }
